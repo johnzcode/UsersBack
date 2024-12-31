@@ -38,6 +38,11 @@ public class UsuarioController {
         return usuarioRepository.save(usuario);
     }
 
+    @Operation(summary = "Actualizar un usuario",
+            description = "Actualiza un usuario existente con la información proporcionada")
+    @ApiResponse(responseCode = "200", description = "Usuario actualizado exitosamente")
+    @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+
     @PutMapping("/{id}")
     public ResponseEntity<Usuario> updateUsuario(@PathVariable Long id, @RequestBody Usuario usuario){
         Usuario existeUsuario = usuarioRepository.findById(id).orElse(null);
