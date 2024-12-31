@@ -2,6 +2,9 @@ package example.Crud.controller;
 
 import example.Crud.model.Usuario;
 import example.Crud.repository.UsuarioRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +14,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/usuarios")
 @CrossOrigin(origins = "http://localhost:4200")
+@Tag(name = "Usuario", description = "API crud de usuarios")
 public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Operation(summary = "Obtener todos los usuarios",
+                description = "Retorna una lista de todos los usuarios registrados")
+    @ApiResponse(responseCode = "200", description = "Lista de usuarios encontrada")
 
     @GetMapping
     public List<Usuario> getAllUsuarios(){
