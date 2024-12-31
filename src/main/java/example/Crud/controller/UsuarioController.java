@@ -29,6 +29,10 @@ public class UsuarioController {
         return usuarioRepository.findAll();
     }
 
+    @Operation(summary = "Crear un nuevo usuario",
+            description = "Crea un nuevo usuario con la información proporcionada")
+    @ApiResponse(responseCode = "200", description = "Usuario creado exitosamente")
+
     @PostMapping
     public Usuario createUsuario(@RequestBody Usuario usuario){
         return usuarioRepository.save(usuario);
