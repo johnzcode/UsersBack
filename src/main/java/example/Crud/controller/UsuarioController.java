@@ -58,6 +58,11 @@ public class UsuarioController {
         }
     }
 
+    @Operation(summary = "Eliminar un usuario",
+            description = "Elimina un usuario según el ID proporcionado")
+    @ApiResponse(responseCode = "200", description = "Usuario eliminado exitosamente")
+    @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUsuario(@PathVariable Long id){
         Usuario user = usuarioRepository.findById(id).orElse(null);
