@@ -50,6 +50,7 @@ public class UsuarioController {
             existeUsuario.setNombre(usuario.getNombre());
             existeUsuario.setEmail(usuario.getEmail());
             existeUsuario.setTelefono(usuario.getTelefono());
+            existeUsuario.setSexo(usuario.getSexo());
 
             Usuario actualizarUser = usuarioRepository.save(existeUsuario);
             return ResponseEntity.ok(actualizarUser);
